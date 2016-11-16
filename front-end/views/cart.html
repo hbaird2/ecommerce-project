@@ -1,0 +1,21 @@
+<div>
+  <ul class="cartDisplay" ng-repeat="item in $storage.cart track by $index">
+    <!-- <div class="checkoutContainer"> -->
+      <li class="cartDisplay">
+        <span class="hoverButton">
+          <span ng-click="removeFromCart($index)" class="remove">Remove</span>
+          <img class="cartImg" ng-src="{{item.product_imageurl}}"/>
+        </span>
+        <div class="prodName">{{item.product_name}}</div>
+        <form class="sizes">
+          <span class="sizeHeader">Select Size:</span><br>
+          <input type="checkbox" value="11 x 17"> 11" x 17"<br>
+          <input type="checkbox" value="18 x 24"> 18" x 24"<br>
+          <input type="checkbox" value="26 x 36"> 26" x 36"
+        </form>
+        
+      </li>
+    <!-- </div> -->
+  </ul>
+  <button class="placeOrder">Place order</button>
+</div>

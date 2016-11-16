@@ -1,0 +1,24 @@
+<div ng-controller='modalCtrl'>
+
+  <div class= "imgContainer">
+    <ul class="productGrid" ng-repeat="product in productData track by $index">
+      <li><img ng-click='toggleModal(product)' ng-src="{{product.product_imageurl}}"/></li>
+    </ul>
+  </div>
+
+    <!-- <button ng-click='toggleModal()'>Open Modal Dialog</button> -->
+    <modal-dialog show='modalShown' width='600px' height='85%'>
+      <div class="pic"><img class="prodPic" src="{{product.product_imageurl}}"/></div>
+      <div class="info">
+        <h3>{{product.product_name}}</h3>
+        <p class="prodInfo">info about the product</p>
+        <p class="prodInfo">Poster Sizes:<br>
+                            11" x 17" = $12.00 <br>
+                            18" x 24" = $24.00 <br>
+                            26" x 36" = $36.00
+        </p>
+        <p class="prodInfo">Add to cart to select desired size</p>
+      </div>
+      <button class="addToCartButton" ng-click="addCart(product)">Add to Cart</button>
+    </modal-dialog>
+</div>
