@@ -3,8 +3,8 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var massive = require('massive');
 var config = require('../config.js')
-var connectionString = config.connectionString;
-var port = process.env.PORT || config.port;
+var connectionString = "postgres://rachelbaird@localhost/ecommerce";
+var port = process.env.PORT || 8888;
 
 var massiveInstance = massive.connectSync({connectionString : connectionString})
 
