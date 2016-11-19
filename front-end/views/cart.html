@@ -1,3 +1,12 @@
+<div class="whiteSpace"></div>
+<div class="subHeader">
+  <span class="subHeaderText">Product Description</span>
+  <span class="subHeaderText">Dimensions</span>
+  <span class="subHeaderText">Price</span>
+  <span class="subHeaderText">Quantity</span>
+  <span class="subHeaderText">Order Total</span>
+</div>
+
 <div>
   <ul class="cartDisplay" ng-repeat="item in $storage.cart track by $index">
     <!-- <div class="checkoutContainer"> -->
@@ -9,13 +18,15 @@
         <div class="prodName">{{item.product_name}}</div>
         <form class="sizes">
           <span class="sizeHeader">Select Size:</span><br>
-          <input type="checkbox" value="11 x 17"> 11" x 17"<br>
-          <input type="checkbox" value="18 x 24"> 18" x 24"<br>
-          <input type="checkbox" value="26 x 36"> 26" x 36"
+          <input ng-click="updatePrice11($index)" name="sizeCheckbox" type="radio" value="11 x 17"> 11" x 17"<br>
+          <input ng-click="updatePrice18($index)" name="sizeCheckbox" type="radio" value="18 x 24"> 18" x 24"<br>
+          <input ng-click="updatePrice36($index)" name="sizeCheckbox" type="radio" value="26 x 36"> 26" x 36"
         </form>
-        
+        <p>${{item.price}}</p>
+        <input class="qtySelect" ng-model="quantity" type="number" min="1" ng-change="updateQty(quantity, $index)">
+        <p>{{item.total}}</p>
       </li>
     <!-- </div> -->
   </ul>
-  <button class="placeOrder">Place order</button>
+  <button ui-sref="checkout" class="placeOrder">Place order</button>
 </div>

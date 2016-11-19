@@ -2,8 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var massive = require('massive');
-
-var connectionString = "postgres://rachelbaird@localhost/ecommerce";
+var config = require('../config.js')
+var connectionString = config.connectionString;
+var port = config.port;
 
 var massiveInstance = massive.connectSync({connectionString : connectionString})
 
@@ -16,6 +17,6 @@ var controller = require('./dataCtrl.js');
 
 app.get('/api/products', controller.getAll);
 
-app.listen('8888', function(){
-  console.log("Successfully listening on : 8888")
+app.listen(port, function(){
+  console.log("Successfully listening on : " + port)
 })

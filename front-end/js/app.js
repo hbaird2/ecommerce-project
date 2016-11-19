@@ -21,6 +21,11 @@ angular.module('ecommerce', ['ui.router', 'ngStorage'])
         templateUrl: '../views/cart.html',
         controller: 'modalCtrl'
       })
+      .state('checkout',{
+        url:'/checkout',
+        templateUrl: '../views/checkout.html',
+        controller: 'modalCtrl'
+      })
 
       $urlRouterProvider
       .otherwise('/');
