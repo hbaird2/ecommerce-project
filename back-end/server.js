@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var massive = require('massive');
-var config = require('../config.js')
+// var config = require('../config.js')
 var connectionString = "postgres://rachelbaird@localhost/ecommerce";
 var port = process.env.PORT || 8888;
 
