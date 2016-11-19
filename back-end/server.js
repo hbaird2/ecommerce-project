@@ -4,7 +4,7 @@ var cors = require('cors');
 var massive = require('massive');
 var config = require('../config.js')
 var connectionString = config.connectionString;
-var port = config.port;
+var port = process.env.PORT || config.port;
 
 var massiveInstance = massive.connectSync({connectionString : connectionString})
 
