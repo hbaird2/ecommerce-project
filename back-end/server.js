@@ -5,7 +5,7 @@ var massive = require('massive');
 var config = require('../config.js')
 // uncomment to run local
 // var connectionString = "postgres://rachelbaird@localhost/ecommerce";
-var connectionString = "DATABASE_URL";
+var connectionString = "process.env.DATABASE_URL";
 var port = process.env.PORT || 8888;
 
 
