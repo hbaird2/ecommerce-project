@@ -5,7 +5,7 @@ var massive = require('massive');
 var config = require('../config.js')
 // uncomment to run local
 // var connectionString = "postgres://rachelbaird@localhost/ecommerce";
-var connectionString = "process.env.DATABASE_URL";
+var connectionString = process.env.DATABASE_URL
 var port = process.env.PORT || 8888;
 
 
@@ -22,24 +22,24 @@ app.set('db', massiveInstance);
 var controller = require('./dataCtrl.js');
 
 // uncomment to run local
-// app.get('/api/products', controller.getAll);
+app.get('/api/products', controller.getAll);
 
 // heroku postgres
-var pg = require('pg');
-pg.defaults.ssl = true;
-
-app.get('/api/products', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client) {
-  if (err) throw err;
-  console.log('Connected to postgres! Getting schemas...');
-
-  client
-    .query('SELECT * FROM product;')
-    .on('row', function(row) {
-      console.log(JSON.stringify(row));
-    });
-});
-});
+// var pg = require('pg');
+// pg.defaults.ssl = true;
+//
+// app.get('/api/products', function (request, response) {
+//   pg.connect(process.env.DATABASE_URL, function(err, client) {
+//   if (err) throw err;
+//   console.log('Connected to postgres! Getting schemas...');
+//
+//   client
+//     .query('SELECT * FROM product;')
+//     .on('row', function(row) {
+//       console.log(JSON.stringify(row));
+//     });
+// });
+// });
 
 
 app.listen(port, function(){
