@@ -5,14 +5,14 @@ var massive = require('massive');
 var config = require('../config.js')
 // uncomment to run local
 // var connectionString = "postgres://rachelbaird@localhost/ecommerce";
-var connectionString = process.env.DATABASE_URL;
 var port = process.env.PORT || 8888;
+var app = module.exports = express();
+var connectionString = process.env.DATABASE_URL;
 
 
 var massiveInstance = massive.connectSync({connectionString : connectionString})
 
-var app = module.exports = express();
-app.use(express.static('front-end'));
+app.use(express.static('../front-end'));
 // app.get('/', function (req, res) {
 //   res.sendFile('../front-end/index.html')
 // })
