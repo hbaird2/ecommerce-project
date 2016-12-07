@@ -12,7 +12,7 @@ var connectionString = process.env.DATABASE_URL;
 
 var massiveInstance = massive.connectSync({connectionString : connectionString})
 
-app.use('/static', express.static(path.join(__dirname, 'front-end')))
+app.use('/', express.static(path.join(__dirname, 'front-end')))
 // app.use(express.static('../front-end'));
 // app.get('/', function (req, res) {
 //   res.sendFile('../front-end/index.html')
