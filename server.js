@@ -9,7 +9,6 @@ var port = process.env.PORT || 8888;
 var app = module.exports = express();
 var connectionString = process.env.DATABASE_URL;
 
-
 var massiveInstance = massive.connectSync({connectionString : connectionString})
 
 app.use(express.static(path.join(__dirname, '/front-end')));
