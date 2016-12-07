@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var massive = require('massive');
-var config = require('../config.js')
+// var config = require('../config.js')
 // uncomment to run local
 // var connectionString = "postgres://rachelbaird@localhost/ecommerce";
 var port = process.env.PORT || 8888;
@@ -17,7 +17,7 @@ app.use(express.static('../front-end'));
 //   res.sendFile('../front-end/index.html')
 // })
 app.use(bodyParser.json());
-// uncomment to run local
+
 app.set('db', massiveInstance);
 var controller = require('./dataCtrl.js');
 
