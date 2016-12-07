@@ -22,6 +22,9 @@ app.set('db', massiveInstance);
 var controller = require('./dataCtrl.js');
 
 // uncomment to run local
+app.get('/', function(request, response) {
+response.send('Hello World!');
+});
 app.get('/api/products', controller.getAll);
 
 // heroku postgres
