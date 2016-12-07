@@ -26,6 +26,11 @@ var controller = require('./dataCtrl.js');
 // app.get('/', function(request, response) {
 // response.send('Hello World!');
 // });
+app.get('/', function(req, res, next){
+
+    res.sendStatus(200);
+
+});
 
 app.get('/api/products', controller.getAll);
 
