@@ -2,7 +2,7 @@
   "name": "ecommerce",
   "version": "1.0.0",
   "description": "",
-  "main": "back-end/server.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
