@@ -13,18 +13,18 @@ var massiveInstance = massive.connectSync({connectionString : connectionString})
 
 // app.use(express.static('/front-end'));
 // app.use(express.static('../front-end'));
-app.get('/', function (req, res) {
-  res.sendFile('/front-end/index.html')
-})
+// app.get('/', function (req, res) {
+//   res.sendFile('/front-end/index.html')
+// })
 app.use(bodyParser.json());
 
 app.set('db', massiveInstance);
 var controller = require('./dataCtrl.js');
 
 // uncomment to run local
-// app.get('/', function(request, response) {
-// response.send('Hello World!');
-// });
+app.get('/', function(request, response) {
+response.send('Hello World!');
+});
 
 
 app.get('/api/products', controller.getAll);
