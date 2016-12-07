@@ -4,15 +4,15 @@ var cors = require('cors');
 var massive = require('massive');
 // var config = require('../config.js')
 // uncomment to run local
-// var connectionString = "postgres://rachelbaird@localhost/ecommerce";
+var connectionString = "postgres://rachelbaird@localhost/ecommerce";
 var port = process.env.PORT || 8888;
 var app = module.exports = express();
-var connectionString = process.env.DATABASE_URL;
+// var connectionString = process.env.DATABASE_URL;
 
 
 var massiveInstance = massive.connectSync({connectionString : connectionString})
 
-app.use(express.static('./front-end'));
+app.use(express.static('public'));
 // app.get('/', function (req, res) {
 //   res.sendFile('../front-end/index.html')
 // })
@@ -22,9 +22,9 @@ app.set('db', massiveInstance);
 var controller = require('./back-end/dataCtrl.js');
 
 // uncomment to run local
-app.get('/', function(request, response) {
-response.send('Hello World!');
-});
+// app.get('/', function(request, response) {
+// response.send('Hello World!');
+// });
 
 app.get('/api/products', controller.getAll);
 
