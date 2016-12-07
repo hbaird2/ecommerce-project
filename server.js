@@ -19,7 +19,7 @@ var massiveInstance = massive.connectSync({connectionString : connectionString})
 app.use(bodyParser.json());
 
 app.set('db', massiveInstance);
-var controller = require('./dataCtrl.js');
+var controller = require('back-end/dataCtrl.js');
 
 // uncomment to run local
 app.get('/', function(request, response) {
