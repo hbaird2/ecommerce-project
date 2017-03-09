@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="styles/mainStyle.css">
     <link href='http://fonts.googleapis.com/css?family=Sansita+One' rel='stylesheet'>
   </head>
-  <body>
+  <body ng-controller="modalCtrl">
     <header>
       <a class="nav" ui-sref="home">Home</a>
 		  <a class="nav" ui-sref="shop">Shop</a>
 		  <a class="nav" ui-sref="contact">Contact</a>
-      <a class="nav" ui-sref="cart">Cart</a>
+      <a class="nav" ui-sref="cart">Cart<div class="cartCount">{{$storage.cart.count}}</div></a>
     </header>
 
     <!-- <div ng-controller='modalCtrl'>
@@ -22,9 +22,10 @@
       </modal-dialog>
     </div> -->
 
+    <!-- ng-view instead of ui-view -->
     <ui-view></ui-view>
 
-
+    <!-- include ng-router as a script tag -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>

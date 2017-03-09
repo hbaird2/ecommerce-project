@@ -32,6 +32,21 @@ header {
   font: 20px 'Sansita One';
   color: black;
   text-decoration: none;
+  position: relative;
+}
+
+.cartCount {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: -11px;
+  margin-right: -8px;
+  background-color: red;
+  border-radius: 30%;
+  padding-left: 2px;
+  padding-right: 2px;
+  color: white;
+  font-size: 15px;
 }
 
 a:hover {
@@ -246,4 +261,45 @@ img:hover {
   display: inline-block;
   font-weight: bold;
   font-family: 'arial', 'sans-serif';
+}
+
+/*checkout page*/
+.rightContainer {
+  float: right;
+  background-color: white;
+  width: 40%;
+  opacity: 0.9;
+}
+
+.reviewCheckoutList {
+    display: flex;
+    align-items: center;
+    /*justify-content: space-between;*/
+}
+
+.subHeaderText {
+  /*margin-left: 60px;*/
+}
+
+.itemSummary {
+  margin-left: 20px;
+  margin-right: 70px;
+
+}
+
+.checkoutImg {
+  height: 180px;
+  width: 130px;
+  /*margin-left: -115px;*/
+}
+
+.pmtForm {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.pmtInfo {
+  width: 70%;
+  margin: 5px;
 }

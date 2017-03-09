@@ -1,4 +1,6 @@
 angular.module('ecommerce', ['ui.router', 'ngStorage'])
+
+// 'ngRoute' and .when instead of state and $routeProvider instead of url and stateProvider
   .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home',{

@@ -8,6 +8,8 @@ angular.module('ecommerce').controller('modalCtrl', ['$scope','$localStorage', '
   if(!$scope.$storage.cart) {
     $scope.$storage.cart = [];
   }
+
+
   $scope.addCart = function(product){
     var itemIsInCart = false;
     for (var i = 0; i < $scope.$storage.cart.length; i++) {
@@ -20,6 +22,7 @@ angular.module('ecommerce').controller('modalCtrl', ['$scope','$localStorage', '
 
     if (!itemIsInCart) {
       $scope.$storage.cart.push(product)
+      $scope.$storage.cart.count = $scope.$storage.cart.length;
     }
     $state.go('cart')
     // console.log($scope.$storage.cart)
@@ -27,32 +30,53 @@ angular.module('ecommerce').controller('modalCtrl', ['$scope','$localStorage', '
 
   $scope.removeFromCart = function($index) {
     $scope.$storage.cart.splice($index, 1);
-  }
-
-  // adding base qty of 1 to cart object
-  function defaultQty1() {
-    for (var i = 0; i < $scope.$storage.cart.length; i++) {
-      $scope.$storage.cart[i].quantity = 1;
+    if($scope.$storage.cart.length === 0) {
+      $scope.$storage.cart.count = null;
+    }
+    else {
+      $scope.$storage.cart.count --;
     }
   }
 
-  defaultQty1();
+
+
+  //make cart counter re-render on refresh
+  function renderCartCount() {
+    if($scope.$storage.cart.length === 0) {
+      $scope.$storage.cart.count = null;
+    }
+    else {
+      $scope.$storage.cart.count = $scope.$storage.cart.length;
+    }
+  }
+
+  renderCartCount();
+
+  // // set initial quantity to 1 on $storage.cart object
+  // function setDefaultQty() {
+  // $scope.$storage.cart.quantity = 1;
+  // }
+  //
+  // setDefaultQty();
+
 
   // $scope.price = 0;
   $scope.quantity = 1;
   // $scope.orderTotal = 0;
 
   $scope.updateQty = function(quantity, $index) {
-    // this.quantity = quantity;
-    this.orderTotal = this.price * this.quantity;
+    this.orderTotal = this.price * this.quantity || 'Please select a size.';
     $scope.$storage.cart[$index].total = this.orderTotal;
     $scope.$storage.cart[$index].quantity = this.quantity;
+    $scope.$storage.cart.count = $scope.$storage.cart.length + (this.quantity - 1);
     console.log("total", $scope.$storage.cart);
   }
 
 
   $scope.updatePrice11 = function($index){
     this.price = 12.99;
+    this.posterSize = '11in x 17in';
+    $scope.$storage.cart[$index].dimensions = this.posterSize;
     this.orderTotal = this.price * this.quantity;
     $scope.$storage.cart[$index].price = this.price;
     this.orderTotal = this.price * this.quantity;
@@ -62,6 +86,8 @@ angular.module('ecommerce').controller('modalCtrl', ['$scope','$localStorage', '
 
   $scope.updatePrice18 = function($index){
     this.price = 24.99;
+    this.posterSize = '18in x 24in';
+    $scope.$storage.cart[$index].dimensions = this.posterSize;
     this.orderTotal = this.price * this.quantity;
     $scope.$storage.cart[$index].price = this.price;
     this.orderTotal = this.price * this.quantity;
@@ -71,6 +97,8 @@ angular.module('ecommerce').controller('modalCtrl', ['$scope','$localStorage', '
 
   $scope.updatePrice36 = function($index){
     this.price = 36.99;
+    this.posterSize = '26in x 36in';
+    $scope.$storage.cart[$index].dimensions = this.posterSize;
     this.orderTotal = this.price * this.quantity;
     $scope.$storage.cart[$index].price = this.price;
     this.orderTotal = this.price * this.quantity;
